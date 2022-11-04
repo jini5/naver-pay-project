@@ -10,10 +10,6 @@
          pageEncoding="EUC-KR"%>
 <html>
 <head>
-    <%
-        // 인코딩 처리
-        request.setCharacterEncoding("euc-kr");
-    %>
     <title>로그인 화면</title>
 
     <script type="text/javascript">
@@ -35,7 +31,7 @@
             }
         }
 
-        // 회원가입 버튼 클릭시 회원가입 화면으로 이동
+        <!--회원가입-->
         function goJoinForm() {
             location.href="JoinForm.jsp";
         }
@@ -47,7 +43,6 @@
     <form name="loginInfo" method="post" action="LoginSucceed.jsp"
           onsubmit="return checkValue()">
 
-        <!-- 이미지 추가 -->
         <br>네이버 페이 프로젝트<br>
 
         <table>
@@ -66,8 +61,7 @@
     </form>
 
     <%
-        // 아이디, 비밀번호가 틀릴경우 화면에 메시지 표시
-        // LoginSucceed.jsp에서 로그인 처리 결과에 따른 메시지를 보낸다.
+
         String msg=request.getParameter("msg");
 
         if(msg!=null && msg.equals("0"))
