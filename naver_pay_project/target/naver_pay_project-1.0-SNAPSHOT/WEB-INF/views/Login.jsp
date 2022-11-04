@@ -2,17 +2,86 @@
   Created by IntelliJ IDEA.
   User: user
   Date: 2022-11-02
-  Time: ì˜¤í›„ 4:49
+  Time: ¿ÀÈÄ 4:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
 <html>
 <head>
-    <title>Login</title>
+    <%
+        // ÀÎÄÚµù Ã³¸®
+        request.setCharacterEncoding("euc-kr");
+    %>
+    <title>·Î±×ÀÎ È­¸é</title>
+
+    <script type="text/javascript">
+
+        function checkValue()
+        {
+            inputForm = eval("document.loginInfo");
+            if(!inputForm.id.value)
+            {
+                alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+                inputForm.id.focus();
+                return false;
+            }
+            if(!inputForm.password.value)
+            {
+                alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+                inputForm.password.focus();
+                return false;
+            }
+        }
+
+        // È¸¿ø°¡ÀÔ ¹öÆ° Å¬¸¯½Ã È¸¿ø°¡ÀÔ È­¸éÀ¸·Î ÀÌµ¿
+        function goJoinForm() {
+            location.href="JoinForm.jsp";
+        }
+    </script>
+
 </head>
 <body>
-    <h1> ë¡œê·¸ì¸ í™”ë©´ ì…ë‹ˆë‹¤. </h1>
-    <button type="button" onclick="location.href='shopping/getShoppingList'">(ë‚ ì§œ ì…ë ¥ ì „)ì£¼ë¬¸ ëª©ë¡ ë¦¬ìŠ¤íŠ¸ë¡œ ì´ë™í•˜ê¸°</button>
-    <button type="button" onclick="location.href='shopping/getSearchDate'">(ë‚ ì§œ ì…ë ¥ í›„)ì£¼ë¬¸ ëª©ë¡ ë¦¬ìŠ¤íŠ¸ë¡œ ì´ë™í•˜ê¸°</button>
+<div id="wrap">
+    <form name="loginInfo" method="post" action="LoginSucceed.jsp"
+          onsubmit="return checkValue()">
+
+        <!-- ÀÌ¹ÌÁö Ãß°¡ -->
+        <br>³×ÀÌ¹ö ÆäÀÌ ÇÁ·ÎÁ§Æ®<br>
+
+        <table>
+            <tr>
+                <td bgcolor="PowderBlue">¾ÆÀÌµğ</td>
+                <td><input type="text" name="id" maxlength="50"></td>
+            </tr>
+            <tr>
+                <td bgcolor="PowderBlue">ºñ¹Ğ¹øÈ£</td>
+                <td><input type="password" name="password" maxlength="50"></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="·Î±×ÀÎ"/>
+        <input type="button" value="È¸¿ø°¡ÀÔ" onclick="JoinForm()" />
+    </form>
+
+    <%
+        // ¾ÆÀÌµğ, ºñ¹Ğ¹øÈ£°¡ Æ²¸±°æ¿ì È­¸é¿¡ ¸Ş½ÃÁö Ç¥½Ã
+        // LoginSucceed.jsp¿¡¼­ ·Î±×ÀÎ Ã³¸® °á°ú¿¡ µû¸¥ ¸Ş½ÃÁö¸¦ º¸³½´Ù.
+        String msg=request.getParameter("msg");
+
+        if(msg!=null && msg.equals("0"))
+        {
+            out.println("<br>");
+            out.println("<font color='red' size='5'>ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.</font>");
+        }
+        else if(msg!=null && msg.equals("-1"))
+        {
+            out.println("<br>");
+            out.println("<font color='red' size='5'>¾ÆÀÌµğ¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.</font>");
+        }
+    %>
+</div>
 </body>
 </html>
+
