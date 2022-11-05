@@ -5,65 +5,65 @@ import org.toyproject.VO.UserVO;
 
 public class UserDTO {
 
-    private String uId = "";
-    private Password uPw = null;
+    private String user_id = "";
+    private Password password = null;
     private String uEmail = "";
 
 
     public UserDTO() {
     }
-    public UserDTO(String uId) {
-        this.uId = uId;
+    public UserDTO(String user_id) {
+        this.user_id = user_id;
     }
 
-    public UserDTO(String uId, String uPw, boolean needEncode) {
-        this.uId = uId;
-        this.uPw = needEncode ? Password.of(uPw, true) : Password.of(uPw, false);
+    public UserDTO(String user_id, String password, boolean needEncode) {
+        this.user_id = user_id;
+        this.password = needEncode ? Password.of(password, true) : Password.of(password, false);
     }
-    public UserDTO(String uId, Password uPw) {
-        this.uId = uId;
-        this.uPw = uPw;
+    public UserDTO(String user_id, Password password) {
+        this.user_id = user_id;
+        this.password = password;
     }
 
-    public UserDTO(String uId, String uPw, String uEmail, boolean needEncode) {
-        this.uId = uId;
-        this.uPw = needEncode ? Password.of(uPw, true) : Password.of(uPw, false);
+    public UserDTO(String user_id, String password, String uEmail, boolean needEncode) {
+        this.user_id = user_id;
+        this.password = needEncode ? Password.of(password, true) : Password.of(password, false);
         this.uEmail = uEmail;
     }
 
-    public UserDTO(String uId, Password uPw, String uEmail) {
-        this.uId = uId;
-        this.uPw = uPw;
+    public UserDTO(String user_id, Password password, String uEmail) {
+        this.user_id = user_id;
+        this.password = password;
         this.uEmail = uEmail;
     }
 
     public User toEntity() {
-        return new User(uId, getuPwStr(), uEmail);
+        return new User(user_id, getuPwStr(), uEmail);
     }
 
 
 
     public UserVO toVO() {
-        return new UserVO(uId, uEmail);
+        return new UserVO(user_id, uEmail);
     }
 
-    public String getuId() {
-        return uId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public Password getuPw() {
-        return uPw;
+    public Password getPassword() {
+        return password;
     }
 
-    public void setuPw(Password uPw) {
-        this.uPw = uPw;
+    public void setPassword(Password password) {
+        this.password = password;
     }
     public String getuPwStr() {
-        return uPw.getuPw();
+        return password.getPassword();
     }
 
     public String getuEmail() {
@@ -77,8 +77,8 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "uId='" + uId + '\'' +
-                ", uPw=" + uPw +
+                "uId='" + user_id + '\'' +
+                ", uPw=" + password +
                 ", uEmail='" + uEmail + '\'' +
                 '}';
     }

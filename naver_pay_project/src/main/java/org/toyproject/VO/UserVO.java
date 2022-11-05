@@ -3,19 +3,19 @@ package org.toyproject.VO;
 import java.util.Objects;
 
 public class UserVO {
-    private String uId = "";
+    private String user_id = "";
     private String uEmail = "";
 
     public UserVO() {
     }
 
-    public UserVO(String uId, String uEmail) {
-        this.uId = uId;
+    public UserVO(String user_id, String uEmail) {
+        this.user_id = user_id;
         this.uEmail = uEmail;
     }
 
-    public String getuId() {
-        return uId;
+    public String getUser_id() {
+        return user_id;
     }
 
     public String getuEmail() {
@@ -27,18 +27,18 @@ public class UserVO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserVO userVO = (UserVO) o;
-        return Objects.equals(uId, userVO.uId) && Objects.equals(uEmail, userVO.uEmail);
+        return Objects.equals(user_id, userVO.user_id) && Objects.equals(uEmail, userVO.uEmail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uId, uEmail);
+        return Objects.hash(user_id, uEmail);
     }
 
     @Override
     public String toString() {
         return "UserVO{" +
-                "uId='" + uId + '\'' +
+                "uId='" + user_id + '\'' +
                 ", uEmail='" + uEmail + '\'' +
                 '}';
     }

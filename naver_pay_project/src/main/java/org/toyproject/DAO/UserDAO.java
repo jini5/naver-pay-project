@@ -118,8 +118,8 @@ public class UserDAO implements IUserDAO{
         try {
             conn = JDBCUsersMgr.getConnection();
             stmt = conn.prepareStatement(USER_INSERT);
-            stmt.setString(1, member.getuId());
-            stmt.setString(2, member.getuPw());
+            stmt.setString(1, member.getUser_id());
+            stmt.setString(2, member.getPassword());
             stmt.setString(3, member.getuEmail());
             res = stmt.executeUpdate();
         } catch (SQLException e) {

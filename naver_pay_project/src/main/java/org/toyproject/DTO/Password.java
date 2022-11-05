@@ -6,18 +6,18 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class Password {
-    private String uPw = "";
+    private String password = "";
 
     private Password() {}
 
-    private Password(String uPw) {
-        uPw = sha256(uPw);
+    private Password(String password) {
+        password = sha256(password);
     }
 
 
     public static Password of(String uPw) {
         Password password = new Password();
-        password.setuPw(password.sha256(uPw));
+        password.setPassword(password.sha256(uPw));
 
         return password;
     }
@@ -26,19 +26,19 @@ public class Password {
         Password password = new Password();
 
         if (needEncode) {
-            password.setuPw(password.sha256(uPw));
+            password.setPassword(password.sha256(uPw));
         } else {
-            password.setuPw(uPw);
+            password.setPassword(uPw);
         }
         return password;
     }
 
-    public String getuPw() {
-        return uPw;
+    public String getPassword() {
+        return password;
     }
 
-    public void setuPw(String uPw) {
-        this.uPw = uPw;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
@@ -84,18 +84,18 @@ public class Password {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Password password = (Password) o;
-        return uPw.equals(password.uPw);
+        return this.password.equals(password.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uPw);
+        return Objects.hash(password);
     }
 
     @Override
     public String toString() {
         return "Password{" +
-                "uPw='" + uPw + '\'' +
+                "uPw='" + password + '\'' +
                 '}';
     }
 }
