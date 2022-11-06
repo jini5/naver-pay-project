@@ -56,12 +56,16 @@
             </tr>
         </table>
         <br>
+        <div class="checkbox_form">
+            <label for="save">AUTO SAVE: </label>
+            <input id="save" type="checkbox" name="save"/>
+        </div>
         <input type="submit" value="로그인"/>
         <input type="button" value="회원가입" onclick="JoinForm()" />
+
     </form>
 
     <%
-
         String msg=request.getParameter("msg");
 
         if(msg!=null && msg.equals("0"))
