@@ -1,85 +1,103 @@
 package org.toyproject.DTO;
 
-import org.toyproject.Entity.User;
-import org.toyproject.VO.UserVO;
+import org.toyproject.Entity.UserEntity;
 
 public class UserDTO {
+    private Long userSerialNum;
+    private String userId;
+    private String userPassword;
+    private String userName;
+    private String userPhoneNumber;
+    private String userAddress;
+    private int userPoint;
 
-    private String user_id = "";
-    private Password password = null;
-    private String uEmail = "";
+    public UserDTO(){
 
-
-    public UserDTO() {
-    }
-    public UserDTO(String user_id) {
-        this.user_id = user_id;
-    }
-
-    public UserDTO(String user_id, String password, boolean needEncode) {
-        this.user_id = user_id;
-        this.password = needEncode ? Password.of(password, true) : Password.of(password, false);
-    }
-    public UserDTO(String user_id, Password password) {
-        this.user_id = user_id;
-        this.password = password;
     }
 
-    public UserDTO(String user_id, String password, String uEmail, boolean needEncode) {
-        this.user_id = user_id;
-        this.password = needEncode ? Password.of(password, true) : Password.of(password, false);
-        this.uEmail = uEmail;
+    public UserDTO(Long userSerialNum, String userID, String userPassword, String userName){
+        this.userSerialNum = userSerialNum;
+        this.userId = userID;
+        this.userPassword = userPassword;
+        this.userName = userName;
     }
 
-    public UserDTO(String user_id, Password password, String uEmail) {
-        this.user_id = user_id;
-        this.password = password;
-        this.uEmail = uEmail;
+    public UserDTO(Long userSerialNum, String userID, String userPassword, String userName, String userPhoneNumber, String userAddress, int userPoint) {
+        this.userSerialNum = userSerialNum;
+        this.userId = userID;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userAddress = userAddress;
+        this.userPoint = userPoint;
     }
 
-    public User toEntity() {
-        return new User(user_id, getuPwStr(), uEmail);
+    public UserEntity toEntity(){
+        return new UserEntity(userSerialNum.toString(), userId, userPassword, userName, userPhoneNumber, userAddress, String.valueOf(userPoint));
     }
 
-
-
-    public UserVO toVO() {
-        return new UserVO(user_id, uEmail);
+    public Long getUserSerialNum() {
+        return userSerialNum;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Password getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(Password password) {
-        this.password = password;
-    }
-    public String getuPwStr() {
-        return password.getPassword();
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getuEmail() {
-        return uEmail;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setuEmail(String uEmail) {
-        this.uEmail = uEmail;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
+    }
+
+    public void setUserPhoneNumber(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public int getUserPoint() {
+        return userPoint;
+    }
+
+    public void setUserPoint(int userPoint) {
+        this.userPoint = userPoint;
     }
 
     @Override
     public String toString() {
         return "UserDTO{" +
-                "uId='" + user_id + '\'' +
-                ", uPw=" + password +
-                ", uEmail='" + uEmail + '\'' +
+                "userSerialNum=" + userSerialNum +
+                ", userId='" + userId + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPhoneNumber='" + userPhoneNumber + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                ", userPoint=" + userPoint +
                 '}';
     }
 }

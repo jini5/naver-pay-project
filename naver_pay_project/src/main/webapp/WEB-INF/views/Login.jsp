@@ -1,4 +1,5 @@
 <%@ page import="java.util.Arrays" %>
+<%@ page import="org.toyproject.utils.Status" %>
 <%
     if (session.getAttribute("SESSION_ID") != null) {
         response.sendRedirect("./index.jsp");
@@ -48,7 +49,7 @@
     if (cookies != null) {
         for (Cookie cookie : cookies) {
             if (cookie.getName() != null) {
-                if (cookie.getName().equals("AUTO_LOGIN")) {
+                if (cookie.getName().equals("자동 로그인")) {
                     String value = cookie.getValue();
                     if (value.equals("true")) {
 %>
